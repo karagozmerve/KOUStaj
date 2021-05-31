@@ -1,0 +1,161 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--https://codepen.io/HighFlyer/pen/BQdxgZ adresinden alınmıştır.-->
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <title>Index</title>
+    <style>
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .me {
+            width: 400px;
+            margin: 90px auto;
+        }
+
+            .me p,
+            .me h1 {
+                letter-spacing: 3px;
+                text-align: center;
+            }
+
+            .me p {
+                font-weight: 200;
+            }
+
+            .me span {
+                font-weight: bold;
+            }
+
+        .social {
+            position: fixed;
+            top: 20px;
+        }
+
+            .social ul {
+                padding: 0px;
+                -webkit-transform: translate(-270px, 0);
+                -moz-transform: translate(-270px, 0);
+                -ms-transform: translate(-270px, 0);
+                -o-transform: translate(-270px, 0);
+                transform: translate(-270px, 0);
+            }
+
+                .social ul li {
+                    display: block;
+                    margin: 5px;
+                    background: rgba(0, 0, 0, 0.36);
+                    width: 300px;
+                    text-align: right;
+                    padding: 10px;
+                    -webkit-border-radius: 0 30px 30px 0;
+                    -moz-border-radius: 0 30px 30px 0;
+                    border-radius: 0 30px 30px 0;
+                    -webkit-transition: all 1s;
+                    -moz-transition: all 1s;
+                    -ms-transition: all 1s;
+                    -o-transition: all 1s;
+                    transition: all 1s;
+                }
+
+                    .social ul li:hover {
+                        width: 350px;
+                        -webkit-transform: translate(110px, 0);
+                        -moz-transform: translate(110px, 0);
+                        -ms-transform: translate(110px, 0);
+                        -o-transform: translate(110px, 0);
+                        transform: translate(110px, 0);
+                        background: rgba(255, 255, 255, 0.4);
+                    }
+
+                        .social ul li:hover a {
+                            color: #000;
+                        }
+
+                        .social ul li:hover i {
+                            color: #fff;
+                            background: rgba(0, 0, 0, 0.36);
+                            -webkit-transform: rotate(360deg);
+                            -moz-transform: rotate(360deg);
+                            -ms-transform: rotate(360deg);
+                            -o-transform: rotate(360deg);
+                            transform: rotate(360deg);
+                            -webkit-transition: all 1s;
+                            -moz-transition: all 1s;
+                            -ms-transition: all 1s;
+                            -o-transition: all 1s;
+                            transition: all 1s;
+                        }
+
+                    .social ul li i {
+                        margin-left: 10px;
+                        color: #000;
+                        background: #fff;
+                        padding: 10px;
+                        -webkit-border-radius: 50%;
+                        -moz-border-radius: 50%;
+                        border-radius: 50%;
+                        width: 20px;
+                        height: 20px;
+                        font-size: 20px;
+                        background: #ffffff;
+                        -webkit-transform: rotate(0deg);
+                        -moz-transform: rotate(0deg);
+                        -ms-transform: rotate(0deg);
+                        -o-transform: rotate(0deg);
+                        transform: rotate(0deg);
+                    }
+
+        body {
+            background-image: url(../Content/img/oekran.png);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            font-family: 'Raleway', sans-serif;
+        }
+    </style>
+</head>
+@if (Session["omail"] == null)
+{
+    <script>
+        window.alert("Sayfayı görüntüleyebilmeniz için giriş yapmanız gerekmektedir.");
+        window.location.href = 'https://localhost:44396/Ogretmen/Giris';
+    </script>
+
+}
+else
+{
+    <body>
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <nav class="social">
+
+
+            <ul>
+                <li><a href="https://localhost:44396/Ogretmen/Mesajgonder">Mesaj Gönder <i class="fas fa-envelope-open-text"></i></a></li>
+                <li><a href="https://localhost:44396/Ogretmen/Mesajlar">Gönderdiğim Mesajlar <i class="far fa-comment-alt"></i></a></li>
+                <li><a href="https://localhost:44396/Ogretmen/Ogrenciler">Öğrenciler <i class="fas fa-user-graduate"></i></a></li>
+                <li><a href="https://localhost:44396/Ogretmen/Hesabim">Hesabım <i class="fas fa-user"></i></a></li>
+                <li><a href="https://localhost:44396/Ogretmen/Cikis">Çıkış Yap  <i class="fa fa-sign-out"></i></a></li>
+
+            </ul>
+        </nav>
+        <div class="me">
+            <p>Hoşgeldiniz <p>
+                <h1 style="        color: white;
+        background-color: hsl(240, 0%, 25%);">
+                    @Session["oadi"]
+    </h1>
+</div>
+</body>
+}
+</html>

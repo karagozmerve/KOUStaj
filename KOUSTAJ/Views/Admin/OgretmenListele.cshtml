@@ -1,0 +1,116 @@
+﻿@model IEnumerable<projeb.Models.Entity.ogretmen>
+@{
+    Layout = "~/Views/Shared/_AdminTabLayout.cshtml";
+}
+<head>
+    <title>Öğretim Görevlileri</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+@if (Session["admin"] == null)
+{
+    <script>
+        window.alert("Sayfayı görüntüleyebilmeniz için giriş yapmanız gerekmektedir.");
+        window.location.href = 'https://localhost:44396/Admin/Login';
+    </script>
+
+}
+else
+{
+    <br />
+    <h2 align="center">~Öğretim Görevlisi Listele/Düzenle~</h2>
+    <hr class="divider my-4" />
+    <table class="table">
+        <tr>
+            <th style="text-align:center">
+                <label>Ad-Soyad</label>
+            </th>
+            <th style="text-align:center">
+                <label>TC Kimlik Numarası</label>
+            </th>
+
+            <th style="text-align:center">
+                <label>Mail Adresi</label>
+            </th>
+            <th style="text-align:center">
+                <label>Şifre</label>
+            </th>
+            <th style="text-align:center">
+                <label>Bölüm</label>
+            </th>
+
+            <th style="text-align:center">
+                <label>İşlem Seçiniz</label>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.adsoyad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tckimlik)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.mail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sifre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bolum)
+                </td>
+
+                <td style="text-align:center">
+                    @Html.ActionLink("Düzenle", "OgretmenDuzenle", new { id = item.id }, new { @class = "btn btn-light btn-sm" }) |
+                    @Html.ActionLink("Sil", "OgretmenSil", new { id = item.id }, new { @class = "btn btn-light btn-sm" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br /><br />
+}

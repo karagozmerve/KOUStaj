@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="800b61dace8347bdbbd87ca84bc96492" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="projebModel.atama" Width="1.5" PointX="9.125" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="projebModel.cv" Width="1.5" PointX="5.125" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="projebModel.cvogrenci" Width="1.5" PointX="7.875" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="projebModel.ogrenci" Width="1.5" PointX="3.375" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="projebModel.ogretmen" Width="1.5" PointX="7.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projebModel.sysdiagrams" Width="1.5" PointX="12.125" PointY="0.625" IsExpanded="true" />
+        <AssociationConnector Association="projebModel.FK_atama_ogrenci" ManuallyRouted="false" />
+        <AssociationConnector Association="projebModel.FK_atama_ogretmen" ManuallyRouted="false" />
+        <AssociationConnector Association="projebModel.FK_cvogrenci_cv" ManuallyRouted="false" />
+        <AssociationConnector Association="projebModel.FK_cvogrenci_ogrenci" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="projebModel.sirket" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="projebModel.sirket_ilan" Width="1.5" PointX="12.625" PointY="6.375" />
+        <AssociationConnector Association="projebModel.FK_sirket_ilan_sirket" />
+        <EntityTypeShape EntityType="projebModel.kabulformu" Width="1.5" PointX="0.5" PointY="5.75" />
+        <EntityTypeShape EntityType="projebModel.kabulformuogrenci" Width="1.5" PointX="2.75" PointY="5.375" />
+        <AssociationConnector Association="projebModel.FK_kabulformuogrenci_kabulformu" />
+        <AssociationConnector Association="projebModel.FK_kabulformuogrenci_ogrenci" />
+        <EntityTypeShape EntityType="projebModel.stajdef" Width="1.5" PointX="0.625" PointY="3.5" />
+        <EntityTypeShape EntityType="projebModel.stajdefogrenci" Width="1.5" PointX="0.75" PointY="0.5" />
+        <AssociationConnector Association="projebModel.FK_stajdefogrenci_ogrenci" />
+        <AssociationConnector Association="projebModel.FK_stajdefogrenci_stajdef" />
+        <EntityTypeShape EntityType="projebModel.ilann" Width="1.5" PointX="15.5" PointY="6.75" />
+        <AssociationConnector Association="projebModel.FK_sirket_ilan_ilann" />
+        <EntityTypeShape EntityType="projebModel.basvuru" Width="1.5" PointX="14.375" PointY="4" />
+        <AssociationConnector Association="projebModel.FK_basvuru_ilann" />
+        <AssociationConnector Association="projebModel.FK_basvuru_ogrenci" />
+        <EntityTypeShape EntityType="projebModel.mesaj" Width="1.5" PointX="5.25" PointY="0.5" />
+        <AssociationConnector Association="projebModel.FK_mesaj_ogrenci" />
+        <AssociationConnector Association="projebModel.FK_mesaj_ogretmen" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

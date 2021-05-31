@@ -1,0 +1,124 @@
+﻿@model IList<projeb.Models.Entity.ogrenci>
+@{
+    Layout = null;
+    ViewBag.Title = "Mesaj Gönder";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Content/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/themes/github.css">
+    <style>
+        .deneme {
+            width: 700px;
+            height: 460px;
+            padding-left: 20px;
+            border: 2px solid;
+            border-color: whitesmoke;
+            border-radius: 15px 50px;
+            background-color: white;
+            margin-left: 340px;
+            margin-top: 120px;
+        }
+
+            .deneme:hover {
+                box-shadow: 2px 2px 3px black;
+            }
+    </style>
+</head>
+<body style="background-color:#667292;">
+
+    @if (Session["omail"] == null)
+    {
+        <script>
+            window.alert("Mesaj Göndeebilmek için giriş yapmanız gerekmektedir.");
+            window.location.href = 'https://localhost:44396/Ogretmen/Giris';
+        </script>
+
+    }
+    else
+    {
+        <div>
+            
+            <div class="deneme">
+                <br />
+                <h3 align="left" style=" font-style: italic; ">Mesaj Gönder</h3>
+                <hr />
+                @using (Html.BeginForm("Mesajgonder", "Ogretmen", FormMethod.Post))
+                {
+                    <label style="font-weight:bold;">Mesaj Göndermek İstediğiniz Öğrenci Adı</label><br />
+
+                    <select name="ogrenciadi" id="exampleInputBolum1" class="form-control">
+                        @foreach (var obj in Model)
+                        {
+                            <option value=@obj.id>@obj.adsoyad</option>
+                        }
+                    </select>
+                    <br /><br />
+                    <label style="font-weight:bold;">Konusu</label><br />
+                    <input type="text" class="bootstrap-tagsinput" name="konu" /><br /><br />
+                    <label style="font-weight:bold;">Mesaj</label><br />
+                    <textarea class="bootstrap-tagsinput" rows="7" cols="55" name="mesaj1" id="mesaj1" required></textarea><br /> <br />
+
+
+                    <input type="submit" value="Kaydet" class="btn btn-outline-secondary btn-xl" />
+
+                }
+            </div>
+
+            
+        </div>
+    }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="~/Content/js/bootstrap-tagsinput.js"></script>
+    <script src="~/Content/js/bootstrap-tagsinput-angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/generic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/html.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/javascript.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/Content/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/js/main.js"></script>
+</body>
+</html>

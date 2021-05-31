@@ -1,0 +1,90 @@
+﻿@model IEnumerable<projeb.Models.Entity.ogrenci>
+
+@{
+    Layout = "~/Views/Shared/_AdminTabLayout.cshtml";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!--Seçim kısmının tasarımı https://codepen.io/jaredbell/pen/OejgMe adresinden alınmıştır-->
+<!-- plugin -->
+<script src="https://www.virtuosoft.eu/code/bootstrap-duallistbox/bootstrap-duallistbox/v3.0.2/jquery.bootstrap-duallistbox.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://www.virtuosoft.eu/code/bootstrap-duallistbox/bootstrap-duallistbox/v3.0.2/bootstrap-duallistbox.css">
+<style>
+    .moveall,
+    .removeall {
+        border: 1px solid #ccc !important;
+        &:hover
+
+    {
+        background: #efefef;
+    }
+
+    }
+
+    .moveall::after {
+        content: attr(title);
+    }
+
+    .removeall::after {
+        content: attr(title);
+    }
+
+    .form-control option {
+        padding: 10px;
+        border-bottom: 1px solid #efefef;
+    }
+</style>
+
+<!-- Demo -->
+<div class="container">
+    <div class="row" style="margin-top: 40px;">
+        <div class="col">
+
+            <h2> Öğrenci-Öğretim Görevlisi Atama </h2>
+            <p> Öğretim görevlisine atama yapmak istediğiniz öğrencileri seçiniz.</p>
+            <hr />
+        </div>
+    </div>
+    @using (Html.BeginForm("Atama", "Admin", FormMethod.Post))
+    {
+        <div class="row" style="margin-bottom: 40px;">
+            <div class="col">
+                <form id="demoform">
+
+                    <select multiple="multiple" size="10" name="duallistbox_demo1[]" title="duallistbox_demo1[]">
+                        @foreach (var obj in Model)
+                        {
+                            <option value=@obj.id>@obj.adsoyad</option>
+
+                        }
+
+                    </select>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 offset-md-6">
+                            <button type="submit" class="btn btn-primary w-100">İşlemi Tamamla</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    }
+    </div>
+
+<script>
+    var demo1 = $('select[name="duallistbox_demo1[]"]').bootstrapDualListbox({
+        nonSelectedListLabel: 'Uygun Öğrenciler',
+        selectedListLabel: 'Seçili Öğrenciler',
+        preserveSelectionOnMove: 'moved',
+        moveAllLabel: 'Move all',
+        removeAllLabel: 'Remove all'
+    });
+    $("#demoform").submit(function () {
+        alert($('[name="duallistbox_demo1[]"]').val());
+        return false;
+    });
+</script>

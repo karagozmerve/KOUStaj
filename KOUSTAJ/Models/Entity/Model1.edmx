@@ -1,0 +1,977 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="projebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="atama">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrid" Type="int" Nullable="false" />
+          <Property Name="ogretmenid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="basvuru">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilan_id" Type="int" Nullable="false" />
+          <Property Name="ogrenci_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cv">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dosyadi" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cvogrenci">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrid" Type="int" Nullable="false" />
+          <Property Name="cvid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ilann">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sirketadi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ilanaciklama" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kabulformu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dosyaadi" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kabulformuogrenci">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrid" Type="int" Nullable="false" />
+          <Property Name="kfid" Type="int" Nullable="false" />
+          <Property Name="durum" Type="varchar" MaxLength="25" />
+          <Property Name="onaydurumu" Type="varchar" MaxLength="55" />
+        </EntityType>
+        <EntityType Name="mesaj">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrtid" Type="int" Nullable="false" />
+          <Property Name="ogrid" Type="int" Nullable="false" />
+          <Property Name="ogrtadi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ogradi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="konu" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="mesaj1" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ogrenci">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adsoyad" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tckimlik" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="ogrno" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sifre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="bolum" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sinif" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ogretmen">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adsoyad" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tckimlik" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="mail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sifre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="bolum" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sirket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="alani" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="maili" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sifre" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sirket_ilan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sirketid" Type="int" Nullable="false" />
+          <Property Name="ilanid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stajdef">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dosyaadi" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stajdefogrenci">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stajdefid" Type="int" Nullable="false" />
+          <Property Name="ogrid" Type="int" Nullable="false" />
+          <Property Name="durum" Type="varchar" MaxLength="25" />
+          <Property Name="onaydurumu" Type="varchar" MaxLength="55" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_atama_ogrenci">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1" />
+          <End Role="atama" Type="Self.atama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="atama">
+              <PropertyRef Name="ogrid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_atama_ogretmen">
+          <End Role="ogretmen" Type="Self.ogretmen" Multiplicity="1" />
+          <End Role="atama" Type="Self.atama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogretmen">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="atama">
+              <PropertyRef Name="ogretmenid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_basvuru_ilann">
+          <End Role="ilann" Type="Self.ilann" Multiplicity="1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilann">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="ilan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_basvuru_ogrenci">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="ogrenci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cvogrenci_cv">
+          <End Role="cv" Type="Self.cv" Multiplicity="1" />
+          <End Role="cvogrenci" Type="Self.cvogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cv">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cvogrenci">
+              <PropertyRef Name="cvid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cvogrenci_ogrenci">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1" />
+          <End Role="cvogrenci" Type="Self.cvogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cvogrenci">
+              <PropertyRef Name="ogrid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kabulformuogrenci_kabulformu">
+          <End Role="kabulformu" Type="Self.kabulformu" Multiplicity="1" />
+          <End Role="kabulformuogrenci" Type="Self.kabulformuogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kabulformu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="kabulformuogrenci">
+              <PropertyRef Name="kfid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kabulformuogrenci_ogrenci">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1" />
+          <End Role="kabulformuogrenci" Type="Self.kabulformuogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="kabulformuogrenci">
+              <PropertyRef Name="ogrid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mesaj_ogrenci">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1" />
+          <End Role="mesaj" Type="Self.mesaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mesaj">
+              <PropertyRef Name="ogrid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mesaj_ogretmen">
+          <End Role="ogretmen" Type="Self.ogretmen" Multiplicity="1" />
+          <End Role="mesaj" Type="Self.mesaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogretmen">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mesaj">
+              <PropertyRef Name="ogrtid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sirket_ilan_ilann">
+          <End Role="ilann" Type="Self.ilann" Multiplicity="1" />
+          <End Role="sirket_ilan" Type="Self.sirket_ilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilann">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sirket_ilan">
+              <PropertyRef Name="ilanid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sirket_ilan_sirket">
+          <End Role="sirket" Type="Self.sirket" Multiplicity="1" />
+          <End Role="sirket_ilan" Type="Self.sirket_ilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sirket">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sirket_ilan">
+              <PropertyRef Name="sirketid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_stajdefogrenci_ogrenci">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1" />
+          <End Role="stajdefogrenci" Type="Self.stajdefogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stajdefogrenci">
+              <PropertyRef Name="ogrid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_stajdefogrenci_stajdef">
+          <End Role="stajdef" Type="Self.stajdef" Multiplicity="1" />
+          <End Role="stajdefogrenci" Type="Self.stajdefogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stajdef">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stajdefogrenci">
+              <PropertyRef Name="stajdefid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projebModelStoreContainer">
+          <EntitySet Name="atama" EntityType="Self.atama" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="basvuru" EntityType="Self.basvuru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cv" EntityType="Self.cv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cvogrenci" EntityType="Self.cvogrenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ilann" EntityType="Self.ilann" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kabulformu" EntityType="Self.kabulformu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kabulformuogrenci" EntityType="Self.kabulformuogrenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mesaj" EntityType="Self.mesaj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ogrenci" EntityType="Self.ogrenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ogretmen" EntityType="Self.ogretmen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sirket" EntityType="Self.sirket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sirket_ilan" EntityType="Self.sirket_ilan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stajdef" EntityType="Self.stajdef" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stajdefogrenci" EntityType="Self.stajdefogrenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_atama_ogrenci" Association="Self.FK_atama_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="atama" EntitySet="atama" />
+          </AssociationSet>
+          <AssociationSet Name="FK_atama_ogretmen" Association="Self.FK_atama_ogretmen">
+            <End Role="ogretmen" EntitySet="ogretmen" />
+            <End Role="atama" EntitySet="atama" />
+          </AssociationSet>
+          <AssociationSet Name="FK_basvuru_ilann" Association="Self.FK_basvuru_ilann">
+            <End Role="ilann" EntitySet="ilann" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_basvuru_ogrenci" Association="Self.FK_basvuru_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cvogrenci_cv" Association="Self.FK_cvogrenci_cv">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="cvogrenci" EntitySet="cvogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cvogrenci_ogrenci" Association="Self.FK_cvogrenci_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="cvogrenci" EntitySet="cvogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kabulformuogrenci_kabulformu" Association="Self.FK_kabulformuogrenci_kabulformu">
+            <End Role="kabulformu" EntitySet="kabulformu" />
+            <End Role="kabulformuogrenci" EntitySet="kabulformuogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kabulformuogrenci_ogrenci" Association="Self.FK_kabulformuogrenci_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="kabulformuogrenci" EntitySet="kabulformuogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mesaj_ogrenci" Association="Self.FK_mesaj_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="mesaj" EntitySet="mesaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mesaj_ogretmen" Association="Self.FK_mesaj_ogretmen">
+            <End Role="ogretmen" EntitySet="ogretmen" />
+            <End Role="mesaj" EntitySet="mesaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sirket_ilan_ilann" Association="Self.FK_sirket_ilan_ilann">
+            <End Role="ilann" EntitySet="ilann" />
+            <End Role="sirket_ilan" EntitySet="sirket_ilan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sirket_ilan_sirket" Association="Self.FK_sirket_ilan_sirket">
+            <End Role="sirket" EntitySet="sirket" />
+            <End Role="sirket_ilan" EntitySet="sirket_ilan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_stajdefogrenci_ogrenci" Association="Self.FK_stajdefogrenci_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="stajdefogrenci" EntitySet="stajdefogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_stajdefogrenci_stajdef" Association="Self.FK_stajdefogrenci_stajdef">
+            <End Role="stajdef" EntitySet="stajdef" />
+            <End Role="stajdefogrenci" EntitySet="stajdefogrenci" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="projebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="atama">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ogrid" Type="Int32" Nullable="false" />
+          <Property Name="ogretmenid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ogrenci" Relationship="Self.FK_atama_ogrenci" FromRole="atama" ToRole="ogrenci" />
+          <NavigationProperty Name="ogretmen" Relationship="Self.FK_atama_ogretmen" FromRole="atama" ToRole="ogretmen" />
+        </EntityType>
+        <EntityType Name="cv">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dosyadi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="cvogrenci" Relationship="Self.FK_cvogrenci_cv" FromRole="cv" ToRole="cvogrenci" />
+        </EntityType>
+        <EntityType Name="cvogrenci">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ogrid" Type="Int32" Nullable="false" />
+          <Property Name="cvid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cv" Relationship="Self.FK_cvogrenci_cv" FromRole="cvogrenci" ToRole="cv" />
+          <NavigationProperty Name="ogrenci" Relationship="Self.FK_cvogrenci_ogrenci" FromRole="cvogrenci" ToRole="ogrenci" />
+        </EntityType>
+        <EntityType Name="ogrenci">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adsoyad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tckimlik" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ogrno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sifre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bolum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sinif" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="atama" Relationship="Self.FK_atama_ogrenci" FromRole="ogrenci" ToRole="atama" />
+          <NavigationProperty Name="cvogrenci" Relationship="Self.FK_cvogrenci_ogrenci" FromRole="ogrenci" ToRole="cvogrenci" />
+          <NavigationProperty Name="kabulformuogrenci" Relationship="projebModel.FK_kabulformuogrenci_ogrenci" FromRole="ogrenci" ToRole="kabulformuogrenci" />
+          <NavigationProperty Name="stajdefogrenci" Relationship="projebModel.FK_stajdefogrenci_ogrenci" FromRole="ogrenci" ToRole="stajdefogrenci" />
+          <NavigationProperty Name="basvuru" Relationship="projebModel.FK_basvuru_ogrenci" FromRole="ogrenci" ToRole="basvuru" />
+          <NavigationProperty Name="mesaj" Relationship="projebModel.FK_mesaj_ogrenci" FromRole="ogrenci" ToRole="mesaj" />
+        </EntityType>
+        <EntityType Name="ogretmen">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adsoyad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tckimlik" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sifre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bolum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="atama" Relationship="Self.FK_atama_ogretmen" FromRole="ogretmen" ToRole="atama" />
+          <NavigationProperty Name="mesaj" Relationship="projebModel.FK_mesaj_ogretmen" FromRole="ogretmen" ToRole="mesaj" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_atama_ogrenci">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1" />
+          <End Role="atama" Type="Self.atama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="atama">
+              <PropertyRef Name="ogrid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_atama_ogretmen">
+          <End Role="ogretmen" Type="Self.ogretmen" Multiplicity="1" />
+          <End Role="atama" Type="Self.atama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogretmen">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="atama">
+              <PropertyRef Name="ogretmenid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cvogrenci_cv">
+          <End Role="cv" Type="Self.cv" Multiplicity="1" />
+          <End Role="cvogrenci" Type="Self.cvogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cv">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cvogrenci">
+              <PropertyRef Name="cvid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cvogrenci_ogrenci">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1" />
+          <End Role="cvogrenci" Type="Self.cvogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cvogrenci">
+              <PropertyRef Name="ogrid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projebEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="atama" EntityType="Self.atama" />
+          <EntitySet Name="cv" EntityType="Self.cv" />
+          <EntitySet Name="cvogrenci" EntityType="Self.cvogrenci" />
+          <EntitySet Name="ogrenci" EntityType="Self.ogrenci" />
+          <EntitySet Name="ogretmen" EntityType="Self.ogretmen" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_atama_ogrenci" Association="Self.FK_atama_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="atama" EntitySet="atama" />
+          </AssociationSet>
+          <AssociationSet Name="FK_atama_ogretmen" Association="Self.FK_atama_ogretmen">
+            <End Role="ogretmen" EntitySet="ogretmen" />
+            <End Role="atama" EntitySet="atama" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cvogrenci_cv" Association="Self.FK_cvogrenci_cv">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="cvogrenci" EntitySet="cvogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cvogrenci_ogrenci" Association="Self.FK_cvogrenci_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="cvogrenci" EntitySet="cvogrenci" />
+          </AssociationSet>
+          <EntitySet Name="sirket" EntityType="projebModel.sirket" />
+          <EntitySet Name="sirket_ilan" EntityType="projebModel.sirket_ilan" />
+          <AssociationSet Name="FK_sirket_ilan_sirket" Association="projebModel.FK_sirket_ilan_sirket">
+            <End Role="sirket" EntitySet="sirket" />
+            <End Role="sirket_ilan" EntitySet="sirket_ilan" />
+          </AssociationSet>
+          <EntitySet Name="kabulformu" EntityType="projebModel.kabulformu" />
+          <EntitySet Name="kabulformuogrenci" EntityType="projebModel.kabulformuogrenci" />
+          <AssociationSet Name="FK_kabulformuogrenci_kabulformu" Association="projebModel.FK_kabulformuogrenci_kabulformu">
+            <End Role="kabulformu" EntitySet="kabulformu" />
+            <End Role="kabulformuogrenci" EntitySet="kabulformuogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kabulformuogrenci_ogrenci" Association="projebModel.FK_kabulformuogrenci_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="kabulformuogrenci" EntitySet="kabulformuogrenci" />
+          </AssociationSet>
+          <EntitySet Name="stajdef" EntityType="projebModel.stajdef" />
+          <EntitySet Name="stajdefogrenci" EntityType="projebModel.stajdefogrenci" />
+          <AssociationSet Name="FK_stajdefogrenci_ogrenci" Association="projebModel.FK_stajdefogrenci_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="stajdefogrenci" EntitySet="stajdefogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_stajdefogrenci_stajdef" Association="projebModel.FK_stajdefogrenci_stajdef">
+            <End Role="stajdef" EntitySet="stajdef" />
+            <End Role="stajdefogrenci" EntitySet="stajdefogrenci" />
+          </AssociationSet>
+          <EntitySet Name="ilann" EntityType="projebModel.ilann" />
+          <AssociationSet Name="FK_sirket_ilan_ilann" Association="projebModel.FK_sirket_ilan_ilann">
+            <End Role="ilann" EntitySet="ilann" />
+            <End Role="sirket_ilan" EntitySet="sirket_ilan" />
+          </AssociationSet>
+          <EntitySet Name="basvuru" EntityType="projebModel.basvuru" />
+          <AssociationSet Name="FK_basvuru_ilann" Association="projebModel.FK_basvuru_ilann">
+            <End Role="ilann" EntitySet="ilann" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_basvuru_ogrenci" Association="projebModel.FK_basvuru_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <EntitySet Name="mesaj" EntityType="projebModel.mesaj" />
+          <AssociationSet Name="FK_mesaj_ogrenci" Association="projebModel.FK_mesaj_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="mesaj" EntitySet="mesaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mesaj_ogretmen" Association="projebModel.FK_mesaj_ogretmen">
+            <End Role="ogretmen" EntitySet="ogretmen" />
+            <End Role="mesaj" EntitySet="mesaj" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sirket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adi" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="alani" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="maili" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sirket_ilan" Relationship="projebModel.FK_sirket_ilan_sirket" FromRole="sirket" ToRole="sirket_ilan" />
+        </EntityType>
+        <EntityType Name="sirket_ilan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sirketid" Type="Int32" Nullable="false" />
+          <Property Name="ilanid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sirket" Relationship="projebModel.FK_sirket_ilan_sirket" FromRole="sirket_ilan" ToRole="sirket" />
+          <NavigationProperty Name="ilann" Relationship="projebModel.FK_sirket_ilan_ilann" FromRole="sirket_ilan" ToRole="ilann" />
+        </EntityType>
+        <Association Name="FK_sirket_ilan_sirket">
+          <End Type="projebModel.sirket" Role="sirket" Multiplicity="1" />
+          <End Type="projebModel.sirket_ilan" Role="sirket_ilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sirket">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sirket_ilan">
+              <PropertyRef Name="sirketid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="kabulformu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dosyaadi" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="kabulformuogrenci" Relationship="projebModel.FK_kabulformuogrenci_kabulformu" FromRole="kabulformu" ToRole="kabulformuogrenci" />
+        </EntityType>
+        <EntityType Name="kabulformuogrenci">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ogrid" Type="Int32" Nullable="false" />
+          <Property Name="kfid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="kabulformu" Relationship="projebModel.FK_kabulformuogrenci_kabulformu" FromRole="kabulformuogrenci" ToRole="kabulformu" />
+          <NavigationProperty Name="ogrenci" Relationship="projebModel.FK_kabulformuogrenci_ogrenci" FromRole="kabulformuogrenci" ToRole="ogrenci" />
+          <Property Name="durum" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="onaydurumu" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_kabulformuogrenci_kabulformu">
+          <End Type="projebModel.kabulformu" Role="kabulformu" Multiplicity="1" />
+          <End Type="projebModel.kabulformuogrenci" Role="kabulformuogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kabulformu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="kabulformuogrenci">
+              <PropertyRef Name="kfid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kabulformuogrenci_ogrenci">
+          <End Type="projebModel.ogrenci" Role="ogrenci" Multiplicity="1" />
+          <End Type="projebModel.kabulformuogrenci" Role="kabulformuogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="kabulformuogrenci">
+              <PropertyRef Name="ogrid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="stajdef">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dosyaadi" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="stajdefogrenci" Relationship="projebModel.FK_stajdefogrenci_stajdef" FromRole="stajdef" ToRole="stajdefogrenci" />
+        </EntityType>
+        <EntityType Name="stajdefogrenci">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stajdefid" Type="Int32" Nullable="false" />
+          <Property Name="ogrid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ogrenci" Relationship="projebModel.FK_stajdefogrenci_ogrenci" FromRole="stajdefogrenci" ToRole="ogrenci" />
+          <NavigationProperty Name="stajdef" Relationship="projebModel.FK_stajdefogrenci_stajdef" FromRole="stajdefogrenci" ToRole="stajdef" />
+          <Property Name="durum" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="onaydurumu" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_stajdefogrenci_ogrenci">
+          <End Type="projebModel.ogrenci" Role="ogrenci" Multiplicity="1" />
+          <End Type="projebModel.stajdefogrenci" Role="stajdefogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stajdefogrenci">
+              <PropertyRef Name="ogrid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_stajdefogrenci_stajdef">
+          <End Type="projebModel.stajdef" Role="stajdef" Multiplicity="1" />
+          <End Type="projebModel.stajdefogrenci" Role="stajdefogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stajdef">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stajdefogrenci">
+              <PropertyRef Name="stajdefid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ilann">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sirketadi" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ilanaciklama" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sirket_ilan" Relationship="projebModel.FK_sirket_ilan_ilann" FromRole="ilann" ToRole="sirket_ilan" />
+          <NavigationProperty Name="basvuru" Relationship="projebModel.FK_basvuru_ilann" FromRole="ilann" ToRole="basvuru" />
+        </EntityType>
+        <Association Name="FK_sirket_ilan_ilann">
+          <End Type="projebModel.ilann" Role="ilann" Multiplicity="1" />
+          <End Type="projebModel.sirket_ilan" Role="sirket_ilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilann">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sirket_ilan">
+              <PropertyRef Name="ilanid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="basvuru">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilan_id" Type="Int32" Nullable="false" />
+          <Property Name="ogrenci_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ilann" Relationship="projebModel.FK_basvuru_ilann" FromRole="basvuru" ToRole="ilann" />
+          <NavigationProperty Name="ogrenci" Relationship="projebModel.FK_basvuru_ogrenci" FromRole="basvuru" ToRole="ogrenci" />
+        </EntityType>
+        <Association Name="FK_basvuru_ilann">
+          <End Type="projebModel.ilann" Role="ilann" Multiplicity="1" />
+          <End Type="projebModel.basvuru" Role="basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilann">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="ilan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_basvuru_ogrenci">
+          <End Type="projebModel.ogrenci" Role="ogrenci" Multiplicity="1" />
+          <End Type="projebModel.basvuru" Role="basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="ogrenci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="mesaj">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ogrtid" Type="Int32" Nullable="false" />
+          <Property Name="ogrid" Type="Int32" Nullable="false" />
+          <Property Name="ogrtadi" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ogradi" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="konu" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mesaj1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ogrenci" Relationship="projebModel.FK_mesaj_ogrenci" FromRole="mesaj" ToRole="ogrenci" />
+          <NavigationProperty Name="ogretmen" Relationship="projebModel.FK_mesaj_ogretmen" FromRole="mesaj" ToRole="ogretmen" />
+        </EntityType>
+        <Association Name="FK_mesaj_ogrenci">
+          <End Type="projebModel.ogrenci" Role="ogrenci" Multiplicity="1" />
+          <End Type="projebModel.mesaj" Role="mesaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mesaj">
+              <PropertyRef Name="ogrid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mesaj_ogretmen">
+          <End Type="projebModel.ogretmen" Role="ogretmen" Multiplicity="1" />
+          <End Type="projebModel.mesaj" Role="mesaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogretmen">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mesaj">
+              <PropertyRef Name="ogrtid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="projebModelStoreContainer" CdmEntityContainer="projebEntities1">
+          <EntitySetMapping Name="atama">
+            <EntityTypeMapping TypeName="projebModel.atama">
+              <MappingFragment StoreEntitySet="atama">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ogrid" ColumnName="ogrid" />
+                <ScalarProperty Name="ogretmenid" ColumnName="ogretmenid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cv">
+            <EntityTypeMapping TypeName="projebModel.cv">
+              <MappingFragment StoreEntitySet="cv">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dosyadi" ColumnName="dosyadi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cvogrenci">
+            <EntityTypeMapping TypeName="projebModel.cvogrenci">
+              <MappingFragment StoreEntitySet="cvogrenci">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ogrid" ColumnName="ogrid" />
+                <ScalarProperty Name="cvid" ColumnName="cvid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ogrenci">
+            <EntityTypeMapping TypeName="projebModel.ogrenci">
+              <MappingFragment StoreEntitySet="ogrenci">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+                <ScalarProperty Name="tckimlik" ColumnName="tckimlik" />
+                <ScalarProperty Name="ogrno" ColumnName="ogrno" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="bolum" ColumnName="bolum" />
+                <ScalarProperty Name="sinif" ColumnName="sinif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ogretmen">
+            <EntityTypeMapping TypeName="projebModel.ogretmen">
+              <MappingFragment StoreEntitySet="ogretmen">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+                <ScalarProperty Name="tckimlik" ColumnName="tckimlik" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="bolum" ColumnName="bolum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="projebModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sirket">
+            <EntityTypeMapping TypeName="projebModel.sirket">
+              <MappingFragment StoreEntitySet="sirket">
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="maili" ColumnName="maili" />
+                <ScalarProperty Name="alani" ColumnName="alani" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sirket_ilan">
+            <EntityTypeMapping TypeName="projebModel.sirket_ilan">
+              <MappingFragment StoreEntitySet="sirket_ilan">
+                <ScalarProperty Name="ilanid" ColumnName="ilanid" />
+                <ScalarProperty Name="sirketid" ColumnName="sirketid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kabulformu">
+            <EntityTypeMapping TypeName="projebModel.kabulformu">
+              <MappingFragment StoreEntitySet="kabulformu">
+                <ScalarProperty Name="dosyaadi" ColumnName="dosyaadi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kabulformuogrenci">
+            <EntityTypeMapping TypeName="projebModel.kabulformuogrenci">
+              <MappingFragment StoreEntitySet="kabulformuogrenci">
+                <ScalarProperty Name="onaydurumu" ColumnName="onaydurumu" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="kfid" ColumnName="kfid" />
+                <ScalarProperty Name="ogrid" ColumnName="ogrid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stajdef">
+            <EntityTypeMapping TypeName="projebModel.stajdef">
+              <MappingFragment StoreEntitySet="stajdef">
+                <ScalarProperty Name="dosyaadi" ColumnName="dosyaadi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stajdefogrenci">
+            <EntityTypeMapping TypeName="projebModel.stajdefogrenci">
+              <MappingFragment StoreEntitySet="stajdefogrenci">
+                <ScalarProperty Name="onaydurumu" ColumnName="onaydurumu" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="ogrid" ColumnName="ogrid" />
+                <ScalarProperty Name="stajdefid" ColumnName="stajdefid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ilann">
+            <EntityTypeMapping TypeName="projebModel.ilann">
+              <MappingFragment StoreEntitySet="ilann">
+                <ScalarProperty Name="ilanaciklama" ColumnName="ilanaciklama" />
+                <ScalarProperty Name="sirketadi" ColumnName="sirketadi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="basvuru">
+            <EntityTypeMapping TypeName="projebModel.basvuru">
+              <MappingFragment StoreEntitySet="basvuru">
+                <ScalarProperty Name="ogrenci_id" ColumnName="ogrenci_id" />
+                <ScalarProperty Name="ilan_id" ColumnName="ilan_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mesaj">
+            <EntityTypeMapping TypeName="projebModel.mesaj">
+              <MappingFragment StoreEntitySet="mesaj">
+                <ScalarProperty Name="mesaj1" ColumnName="mesaj1" />
+                <ScalarProperty Name="konu" ColumnName="konu" />
+                <ScalarProperty Name="ogradi" ColumnName="ogradi" />
+                <ScalarProperty Name="ogrtadi" ColumnName="ogrtadi" />
+                <ScalarProperty Name="ogrid" ColumnName="ogrid" />
+                <ScalarProperty Name="ogrtid" ColumnName="ogrtid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

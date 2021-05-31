@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AdminTabLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/vendor/boostrap/bootstrap.js")" rel="stylesheet" type="text/css" />
+
+    <title>Şirket Ekle</title>
+</head>
+@if (Session["admin"] == null)
+{
+    <script>
+        window.alert("Sayfayı görüntüleyebilmeniz için giriş yapmanız gerekmektedir.");
+        window.location.href = 'https://localhost:44396/Admin/Login';
+    </script>
+
+}
+else
+{
+    <body>
+        @using (Html.BeginForm("SirketEkle", "Admin", FormMethod.Post))
+        {
+        <div>
+            @ViewBag.Mesaj
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputAdSoyad1">Şirketin Adı</label>
+                    <input type="text" class="form-control" id="exampleInputAdSoyad1" name="adi" placeholder="Şirketin adını giriniz.">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputTC1">Şirketin Faaliyet Alanı</label>
+                    <input type="text" class="form-control" id="exampleInputTC1" name="alani" placeholder="Şirketin hangi alanda çalıştığını giriniz.">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Şirkete Ait Mail Adresi</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="maili" placeholder="Şirkete ait mail adresini giriniz.">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Şirketin Şifresi</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="sifre" aria-describedby="emailHelp" placeholder="Şifre giriniz.">
+                    <small id="emailHelp" class="form-text text-muted">Şifre şirket adı+faaliyet alanından oluşmalıdır.</small>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary">Ekle</button>
+            </form>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+     <br /><br />
+        </div>
+        }
+    </body>
+}
+</html>

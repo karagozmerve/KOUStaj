@@ -1,0 +1,166 @@
+﻿@model projeb.Models.Entity.ogrenci
+@{
+    Layout = "~/Views/Shared/_AdminTabLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Öğrenci Düzenle</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Content/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/themes/github.css">
+    <style>
+        .deneme {
+            width: 700px;
+            height: 760px;
+            margin-top:-80px;
+            padding-left: 20px;
+            margin-left: 140px;
+            border: 2px solid;
+            border-color: gray;
+            border-radius: 15px 50px;
+            background-color: white;
+        }
+
+            .deneme:hover {
+                box-shadow: 2px 2px 3px black;
+            }
+    </style>
+</head>
+<body>
+
+  
+        <br /><br /><br /><br />
+        <div class="deneme" align="center">
+            <br />
+            @using (Html.BeginForm("OgrenciDuzenle", "Admin", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <h2 align="center">~ Öğrenci Düzenle ~</h2>
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+
+            <div class="form-group">
+
+                <label>Öğrencinin Adı-Soyadı</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.adsoyad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.adsoyad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Öğrencinin TC Kimlik Numarası</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.tckimlik, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.tckimlik, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Öğrencinin Okul Numarası</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ogrno, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ogrno, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Öğrencinin Mail Adresi</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Öğrencinin Şifresi</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.sifre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.sifre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Öğrencinin Okuduğu Bölüm</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.bolum, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.bolum, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Öğrencinin Sınıfı</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.sinif, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.sinif, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Değişiklikleri Kaydet" class="btn btn-outline-secondary btn-xl" />  /
+                    @Html.ActionLink("Geri Dön", "OgrenciListele")
+
+                </div>
+            </div>
+        </div>
+            }
+
+        </div>
+        <br /><br />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="~/Content/js/bootstrap-tagsinput.js"></script>
+    <script src="~/Content/js/bootstrap-tagsinput-angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/generic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/html.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/javascript.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/Content/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/js/main.js"></script>
+</body>
+</html>

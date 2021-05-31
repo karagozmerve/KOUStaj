@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AdminTabLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/vendor/boostrap/bootstrap.js")" rel="stylesheet" type="text/css" />
+
+    <title>Ogrenci Ekle</title>
+</head>
+@if (Session["admin"] == null)
+{
+    <script>
+        window.alert("Sayfayı görüntüleyebilmeniz için giriş yapmanız gerekmektedir.");
+        window.location.href = 'https://localhost:44396/Admin/Login';
+    </script>
+
+}
+else
+{
+    <body>
+
+        @using (Html.BeginForm("OgretmenEkle", "Admin", FormMethod.Post))
+        {
+            <div>
+                @ViewBag.Mesaj
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputAdSoyad1">Öğretim Görevlisinin Adı-Soyadı</label>
+                        <input type="text" class="form-control" id="exampleInputAdSoyad1" name="adsoyad" placeholder="Öğretim Görevlisine ait ad-soyad giriniz.">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputTC1">Öğretim Görevlisinin TC Kimlik Numarası</label>
+                        <input type="text" class="form-control" id="exampleInputTC1" name="tckimlik" onkeypress="return event.charCode>= 48 &&event.charCode<= 57" maxlength="11" minlength="11" placeholder="Öğretim Görevlisine ait TC Kimlik numarası giriniz.">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Öğretim Görevlisinin Mail Adresi</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="mail" placeholder="Öğretim Görevlisine ait okul mail adresini giriniz.">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Öğretim Görevlisinin Şifresi</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="sifre" aria-describedby="emailHelp" placeholder="Şifre giriniz.">
+                        <small id="emailHelp" class="form-text text-muted">Şifre TC Kimlik numarası+soyaisimden oluşmalıdır.</small>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputBolum1">Öğretim Görevlisi Olduğu Bölüm</label><br />
+                        <select name="bolum" id="exampleInputBolum1" class="form-control">
+                            <option value="bsm">Bilişim Sistemleri Müh.</option>
+                            <option value="psk">Psikoloji </option>
+                            <option value="gr">Grafik Tasarım </option>
+                            <option value="il">İletişim ve Tasarım</option>
+                            <option value="ul"> Uluslararası Lojistik ve Taşımacılık </option>
+                            <option value="bm">Bilgisayar Müh.</option>
+                            <option value="em">Endüstri Müh.</option>
+                            <option value="mm">Makine Müh.</option>
+                            <option value="im">İnşaat Müh.</option>
+                            <option value="km">Kimya Müh.</option>
+
+                        </select>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">Ekle</button>
+                </form>
+
+            </div><br /><br /><br />
+        }
+    </body>
+}
+</html>

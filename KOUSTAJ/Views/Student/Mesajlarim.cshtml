@@ -1,0 +1,65 @@
+﻿@model IList<projeb.Models.Entity.mesaj>
+<style>
+    .butonum {
+        color: #034f84;
+    }
+</style>
+
+@if (Session["kmail"] == null)
+{
+    <script>
+        window.alert("Mesajlarınızı görüntüleyebilmeniz için giriş yapmanız gerekmektedir.");
+        window.location.href = 'https://localhost:44396/Student/Login';
+    </script>
+
+}
+else
+{
+    <body style="background-color:#667292;">
+
+        @foreach (var obj in Model)
+        {
+            <div>
+
+                <div class="limiter">
+
+                    <div class="container-login100" style="background-color:white; width:790px;margin-left:320px;">
+
+                        <div class="wrap-login100" style=" border: 3px solid #667292; box-shadow: 1px 1px 2px;height:500px;">
+
+
+                            <form class="login100-form validate-form">
+                                <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                                    <br />
+                                    <h5 style="color: #034f84;font:italic;">Gönderen Öğretim Görevlinizin Adı</h5>        <hr />
+                                    <h5 style="color: black;">@obj.ogrtadi</h5>
+
+                                </div>
+                                <br />
+                                <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+                                    <h5 style="color: #034f84;font:italic;">Mesajın Konusu</h5>        <hr />
+                                    <h5 style="color: black;">@obj.konu</h5>
+                                </div><br />
+                                <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+                                    <h5 style="color: #034f84;font:italic;">Mesaj   </h5>        <hr />
+                                    <h5 style="color: black;">@obj.mesaj1</h5>
+                                </div>
+                                <br /><br /><br />
+
+
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <br /><br /><br />
+
+
+            </div>}
+    </body>
+}
